@@ -1,0 +1,4 @@
+{
+  "alexaAppId": "<%= alexaAppId %>",
+  "lambdaName": "<%= lambdaName %>"
+}

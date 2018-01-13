@@ -1,0 +1,11 @@
+{
+  "name": "generator-alexa-lambda",
+  "version": "1.0.0",
+  "description": "Yeoman generator that allows you to quickly create and upload a lambda function for an Alexa skill.",
+  "main": "index.js",
+  "author": "Kevin Gary",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^2.0.2"
+  }
+}
