@@ -2,7 +2,7 @@
 
 const Generator = require('yeoman-generator');
 
-const { noSpaces } = require('./validate.js');
+const { notEmptyNoSpaces } = require('./validate.js');
 
 class AlexaLambdaGenerator extends Generator {
   prompting() {
@@ -10,19 +10,24 @@ class AlexaLambdaGenerator extends Generator {
       {
         type: 'input',
         name: 'project',
-        message: `Project name:`,
-        validate: noSpaces
+        message: 'Project name:',
+        validate: notEmptyNoSpaces
       },
       {
         type: 'input',
         name: 'repository',
-        message: `Git repository url:`,
-        validate: noSpaces
+        message: 'Git repository url:',
+        validate: notEmptyNoSpaces
       },
       {
         type: 'input',
         name: 'author',
-        message: `Author name:`
+        message: 'Author name:'
+      },
+      {
+        type: 'input',
+        name: 'description',
+        message: 'Description name:'
       },
       {
         type: 'input',
@@ -33,14 +38,14 @@ class AlexaLambdaGenerator extends Generator {
         type: 'input',
         name: 'alexaAppId',
         message: `AWS Alexa Skill's application ID:`,
-        validate: noSpaces
+        validate: notEmptyNoSpaces
       }
     ])
     .then(answers => this.answers = answers);
   }
 
   writing() {
-    const { alexaAppId, author, lambdaName, project } = this.answers;
+    const { alexaAppId, author, description, lambdaName, project } = this.answers;
 
     this.fs.copyTpl(
       this.templatePath('package.json'),
