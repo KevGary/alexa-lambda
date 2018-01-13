@@ -1,28 +1,39 @@
+'use strict';
+
 const Generator = require('yeoman-generator');
 
-module.exports = class extends Generator {
+const { noSpaces } = require('./validate.js');
+
+class AlexaLambdaGenerator extends Generator {
   prompting() {
     return this.prompt([
       {
         type: 'input',
         name: 'project',
-        message: `What's your project's name?`,
-        default: this.appname
+        message: `Project name:`,
+        validate: noSpaces
+      },
+      {
+        type: 'input',
+        name: 'repository',
+        message: `Git repository url:`,
+        validate: noSpaces
       },
       {
         type: 'input',
         name: 'author',
-        message: `What's the author's name?`
+        message: `Author name:`
       },
       {
         type: 'input',
         name: 'lambdaName',
-        message: `What's your AWS Lambda function's name?`
+        message: `AWS Lambda function's name:`
       },
       {
         type: 'input',
         name: 'alexaAppId',
-        message: `What's your AWS Alexa Skill's application ID?`
+        message: `AWS Alexa Skill's application ID:`,
+        validate: noSpaces
       }
     ])
     .then(answers => this.answers = answers);
@@ -46,15 +57,21 @@ module.exports = class extends Generator {
       this.destinationPath('index.js')
     );
     this.fs.copy(
-      this.templatePath('zip.js'),
-      this.destinationPath('zip.js')
+      this.templatePath('deploy.js'),
+      this.destinationPath('deploy.js')
     );
   }
 
   install() {
-    this.npmInstall(['adm-zip', 'alexa-sdk', 'zip-dir'], {
+    this.npmInstall(['adm-zip', 'alexa-sdk'], {
       "--save": true,
       "--silent": true
     });
   }
+
+  end() {
+    console.info('\nhappy coding!');
+  }
 };
+
+module.exports = AlexaLambdaGenerator;

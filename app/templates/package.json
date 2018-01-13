@@ -6,7 +6,6 @@
   "author": "<%= author %>",
   "license": "ISC",
   "scripts": {
-    "start": "node index",
-    "zip": "node zip"
+    "deploy": "node deploy"
   }
 }
