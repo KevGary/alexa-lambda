@@ -1,24 +1,30 @@
 'use strict';
 
-const Alexa = require('alexa-sdk');
+const alexa = require('alexa-sdk');
 
-const { alexaAppId } = require('./config.json');
+const config = require('./config.json');
 
-const handlers = {
-  'LaunchRequest': function() {
-
-  },
-  'SessionEndedRequest': function() {
-
-  },
-  'AMAZON.HelpIntent': function() {
-
+class AlexaLambda {
+  constructor() {
+    this = { ...this, ...config };
   }
-};
 
-exports.handler = function(event, context) {
-  const alexa = Alexa.handler(event, context);
-  alexa.appId = alexaAppId;
-  alexa.registerHandlers(handlers);
-  alexa.execute();
-};
+  handler(event, context) {
+    const alexa = alexa.handler(event, context);
+    alexa.appId = this.alexAppId;
+    alexa.registerHandlers(this.getHandlers());
+    alexa.execute();
+  }
+
+  getHandlers() {
+    return {
+      'LaunchRequest': function() {
+        this.emit(':tell', 'Welcome!');
+      }
+    };
+  }
+}
+
+const alexaLambda = new AlexaLambda();
+
+exports.handler = alexaLambda.handler;
