@@ -1,26 +1,25 @@
 'use strict';
 
-const isEmpty = (text) => {
+const notEmpty = (text = '') => {
   if (!text) {
     console.warn('\nPlease enter value');
-    return true;
+    return false;
   }
-  return false;
+  return true;
 };
 
-const hasSpaces = (text = '') => {
+const noSpaces = (text = '') => {
   if (/\s/.test(text)) {
     console.warn('\nSpaces not allowed');
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 
-const notEmptyNoSpaces = (text = '') => {
-  if (isEmpty(text) || hasSpaces(text)) {
-    return Promise.resolve(false);
-  }
-  return Promise.resolve(true);
-}
+const notEmptyNoSpaces = (text = '') => notEmpty(text) && noSpaces(text);
 
-module.exports = { notEmptyNoSpaces };
+module.exports = {
+  notEmpty,
+  noSpaces,
+  notEmptyNoSpaces
+};

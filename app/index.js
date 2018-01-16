@@ -2,7 +2,7 @@
 
 const Generator = require('yeoman-generator');
 
-const { notEmptyNoSpaces } = require('./validate.js');
+const { notEmptyNoSpaces, noSpaces } = require('./validate.js');
 
 class AlexaLambdaGenerator extends Generator {
   prompting() {
@@ -17,7 +17,7 @@ class AlexaLambdaGenerator extends Generator {
         type: 'input',
         name: 'repository',
         message: 'Git repository url:',
-        validate: notEmptyNoSpaces
+        validate: noSpaces
       },
       {
         type: 'input',
