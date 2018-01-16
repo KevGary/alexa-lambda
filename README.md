@@ -1,4 +1,4 @@
-This Yeoman generator allows you to quickly create and deploy an AWS Lambda function for your Alexa skill.
+A Yeoman generator that allows you to quickly create and deploy an AWS Lambda function for your Alexa skill.
 
 # Prerequisites
 
