@@ -1,5 +1,7 @@
 'use strict';
 
+const process = require('process');
+
 const Generator = require('yeoman-generator');
 
 const { notEmptyNoSpaces, noSpaces } = require('./validate.js');
@@ -49,28 +51,32 @@ class AlexaLambdaGenerator extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('package.json'),
-      this.destinationPath('package.json'),
+      this.destinationPath(`${project}/package.json`),
       { author, project }
     );
     this.fs.copyTpl(
       this.templatePath('config.json'),
-      this.destinationPath('config.json'),
+      this.destinationPath(`${project}/config.json`),
       { alexaAppId, lambdaName }
     );
     this.fs.copy(
       this.templatePath('index.js'),
-      this.destinationPath('index.js')
+      this.destinationPath(`${project}/index.js`)
     );
     this.fs.copy(
       this.templatePath('deploy.js'),
-      this.destinationPath('deploy.js')
+      this.destinationPath(`${project}/deploy.js`)
     );
   }
 
   install() {
+    const { project } = this.answers;
+
+    process.chdir(`${process.cwd()}/${project}`);
+
     this.npmInstall(['adm-zip', 'alexa-sdk'], {
-      "--save": true,
-      "--silent": true
+      '--save': true,
+      '--silent': true
     });
   }
 
