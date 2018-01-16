@@ -34,7 +34,8 @@ class AlexaLambdaGenerator extends Generator {
       {
         type: 'input',
         name: 'lambdaName',
-        message: `AWS Lambda function's name:`
+        message: `AWS Lambda function's name:`,
+        validate: notEmptyNoSpaces
       },
       {
         type: 'input',
