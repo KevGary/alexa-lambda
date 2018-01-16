@@ -20,7 +20,7 @@ npm install -g generator-alexa-lambda
 
 # Usage
 
-## Generate Project
+### Generate Project
 
 ```bash
 yo alexa-lambda
@@ -30,7 +30,7 @@ This will scaffold a project folder that has everything you need to develop and 
 
 Add your intent handlers to `index.js` and deploy with a single command.
 
-## Deploy
+### Deploy
 
 ```bash
 npm run deploy
