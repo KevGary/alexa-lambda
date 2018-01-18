@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Kevin Gary",
   "license": "ISC",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/KevGary/alexa-lambda"
+  },
   "dependencies": {
     "yeoman-generator": "^2.0.2"
   }
