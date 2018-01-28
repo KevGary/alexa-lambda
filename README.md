@@ -2,12 +2,12 @@ A Yeoman generator that allows you to quickly create and deploy an AWS Lambda fu
 
 # Prerequisites
 
-1. An Alexa Skill.
-2. An AWS Lambda function.
+1. Create an Alexa Skill in [Amazon Developer Services](https://developer.amazon.com/).
+2. Create a Lambda function in [Amazon Web Services](https://aws.amazon.com/).
 
 Configure them to work together. [Here's how](https://developer.amazon.com/docs/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html).
 
-Once configured, you're ready to develop the actual AWS Lambda function code!
+Once configured, you'll need to develop the actual AWS Lambda function. That's where this package comes to the rescue!
 
 # Installation
 
@@ -26,9 +26,13 @@ npm install -g generator-alexa-lambda
 yo alexa-lambda
 ```
 
-This will scaffold a project folder that has everything you need to develop and deploy an AWS Lambda Skill for your Alexa Skill. It works out of the box.
+This will scaffold a project folder that has everything you need to develop and deploy an AWS Lambda function for your Alexa Skill. It works out of the box.
 
-Add your intent handlers to `index.js` and deploy with a single command.
+### Develop
+
+Develop your Alexa Skill's intent handlers in `index.js` using the [aws-sdk](https://www.npmjs.com/package/aws-sdk) package, which is pre-installed by this generator.
+
+Create and include new JavaScript files and npm packages in your project as you like. The deploy command will include and upload all of them to your AWS Lambda function.
 
 ### Deploy
 
