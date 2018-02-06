@@ -1,10 +1,20 @@
 {
   "name": "generator-alexa-lambda",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Yeoman generator that allows you to quickly create and upload a lambda function for an Alexa skill.",
   "main": "index.js",
+  "keywords": [
+    "alexa",
+    "amazon",
+    "aws",
+    "lambda",
+    "yeoman",
+    "generator",
+    "skill",
+    "skills"
+  ],
   "author": "Kevin Gary",
-  "license": "ISC",
+  "license": "MIT",
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/KevGary/alexa-lambda"
